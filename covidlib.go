@@ -55,13 +55,8 @@ func Find(table []covid, filter string) []covid {
 	result := make([]covid, 0)
 	filter = strings.ToUpper(filter)
 	for _, cur := range table {
-		if cur.Discharged== filter ||
-			cur.Date == filter ||
-			cur.Still_admitted == filter ||
-			cur.Test == filter ||
-			cur.Positive == filter ||
-			strings.Contains(strings.ToUpper(cur.Region), filter) ||
-			strings.Contains(strings.ToUpper(cur.Expired), filter) {
+		if strings.Contains(strings.ToUpper(cur.Region), filter) ||
+		    strings.Contains(strings.ToUpper(cur.Date), filter) {
 			result = append(result, cur)
 		}
 	}
