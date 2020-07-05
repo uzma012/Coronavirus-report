@@ -1,4 +1,4 @@
-package covidlib
+package curlib
 
 import (
 	"encoding/csv"
@@ -33,11 +33,13 @@ func Load(path string) []covid {
 			panic(err.Error())
 		}
 		c := covid{
-			Date: row[0],
-			Discharged:    row[1],
-			Expired:    row[2],
-			Region:  row[3],
-			Still_admitted: row[4],
+			Date: row[4],
+			Test: row[3],
+			Positive:row[2],
+			Discharged:    row[5],
+			Expired:    row[6],
+			Region:  row[7],
+			Still_admitted: row[8],
 		}
 		table = append(table, c)
 	}
@@ -51,8 +53,11 @@ func Find(table []covid, filter string) []covid {
 	result := make([]covid, 0)
 	filter = strings.ToUpper(filter)
 	for _, cur := range table {
-		if cur.Region == filter ||
-			cur.Expired == filter ||
+		if cur.Discharged== filter ||
+			cur.Date == filter ||
+			cur.Still_admitted == filter ||
+			cur.Test == filter ||
+			cur.Positive == filter ||
 			strings.Contains(strings.ToUpper(cur.Region), filter) ||
 			strings.Contains(strings.ToUpper(cur.Expired), filter) {
 			result = append(result, cur)
