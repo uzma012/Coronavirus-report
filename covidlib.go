@@ -13,6 +13,8 @@ type covid struct {
 	Expired  string
 	Region string
 	Still_admitted string
+	Test string
+	Positive string
 }
 
 func Load(path string) []covid {
