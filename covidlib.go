@@ -1,4 +1,4 @@
-package curlib
+package covidlib
 
 import (
 	"encoding/csv"
